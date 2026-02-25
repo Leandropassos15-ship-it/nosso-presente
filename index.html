@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Para o amor da Vida do Lê</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&family=Dancing+Script:wght@700&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#e3f2fd,#bbdefb);
+  color:#03396c;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+.screen{display:none;padding:30px;animation:fade .6s}
+.active{display:block}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:25px;
+  background:#2196f3;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  margin:12px;
+}
+
+/* LOGIN */
+h1{font-family:'Pacifico';font-size:38px;margin-bottom:10px}
+
+.digits{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:20px 0;
+}
+.digits input{
+  width:55px;height:65px;
+  border-radius:18px;
+  border:2px solid #90caf9;
+  font-size:28px;
+  text-align:center;
+}
+
+.login-photo{
+  width:220px;
+  height:280px;
+  margin:20px auto;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.login-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:sepia(.4);
+}
+
+/* MENU */
+.subtitle{font-style:italic;margin-bottom:30px}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.card{
+  height:160px;
+  border-radius:25px;
+  overflow:hidden;
+  cursor:pointer;
+  position:relative;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  transition:transform .4s, box-shadow .4s;
+}
+.card:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 18px 35px rgba(0,0,0,.25);
+}
+
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.65);
+}
+
+.card span{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:20px;
+  font-weight:500;
+}
+
+/* MEMORIAS */
+.memory-stack{
+  position:relative;
+  width:260px;
+  height:320px;
+  margin:30px auto;
+}
+.memory-stack img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  animation:pop .4s;
+}
+
+@keyframes pop{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+/* CALENDARIO */
+.calendar-photo{
+  width:220px;
+  height:280px;
+  margin:20px auto;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.calendar-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+#time{
+  font-family:'Dancing Script',cursive;
+  font-size:34px;
+  margin-top:20px;
+}
+
+/* JOGO */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,80px);
+  gap:15px;
+  justify-content:center;
+  margin-top:30px;
+}
+
+.card-game{
+  width:80px;height:80px;
+  border-radius:15px;
+  background:#90caf9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.card-game img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+.victory{
+  font-family:'Baloo 2',cursive;
+  font-size:42px;
+  color:#0d47a1;
+  animation:fade .8s;
+}
+
+/* VIDEO */
+.video-box{
+  max-width:700px;
+  margin:20px auto;
+}
+.video-box video{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+/* NOTA */
+.note{
+  max-width:500px;
+  margin:30px auto;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="screen active">
+  <h1>Para o amor da Vida do Lê</h1>
+
+  <div class="digits">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+  </div>
+
+  <div class="login-photo">
+    <img src="mem1.jpg">
+  </div>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="screen">
+  <h1>Menu do nosso Amor</h1>
+  <div class="subtitle">Juntos pra sempre.</div>
+
+  <div class="menu">
+    <div class="card" onclick="openScreen('memorias')"><img src="mem2.jpg"><span>Nossas Memórias</span></div>
+    <div class="card" onclick="openScreen('calendar')"><img src="mem3.jpg"><span>Calendário Momo</span></div>
+    <div class="card" onclick="openScreen('game')"><img src="mem4.jpg"><span>Jogo da Memória</span></div>
+    <div class="card" onclick="openScreen('note')"><img src="mem5.jpg"><span>Nota de Amor</span></div>
+    <div class="card" onclick="openScreen('video')"><img src="mem6.jpg"><span>🎬 Nosso Filminho</span></div>
+  </div>
+</div>
+
+<!-- MEMORIAS -->
+<div id="memorias" class="screen">
+  <h1>Nossas Memórias</h1>
+  <div class="memory-stack" onclick="nextMemory()"></div>
+  <button onclick="back()">Voltar ao Menu</button>
+</div>
+
+<!-- CALENDARIO -->
+<div id="calendar" class="screen">
+  <h1>Nosso Tempo</h1>
+  <div class="calendar-photo"><img src="mem7.jpg"></div>
+  <div id="time"></div>
+  <button onclick="back()">Voltar ao Menu</button>
+</div>
+
+<!-- JOGO -->
+<div id="game" class="screen">
+  <h1>Jogo da Memória</h1>
+  <div class="grid"></div>
+  <div id="win"></div>
+  <button onclick="back()">Voltar ao Menu</button>
+</div>
+
+<!-- VIDEO -->
+<div id="video" class="screen">
+  <h1>Nosso Filminho 🎬</h1>
+  <div class="video-box">
+    <video controls>
+      <source src="video.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
+  </div>
+  <button onclick="back()">Voltar ao Menu</button>
+</div>
+
+<!-- NOTA -->
+<div id="note" class="screen">
+  <h1>Nota de Amor</h1>
+  <div class="note">
+    Esse site é só uma brincadeira… mas o que eu sinto por você é muito sério.
+    Cada foto, cada segundo contado aqui, é prova de que com você tudo fica
+    mais leve, mais bonito e mais verdadeiro.<br><br>
+    Obrigado por ser meu lugar seguro, minha risada fácil
+    e minha melhor escolha todos os dias.<br><br>
+    Com todo meu amor,<br>
+    <strong>Lê 💙</strong>
+  </div>
+  <button onclick="back()">Voltar ao Menu</button>
+</div>
+
+<audio id="music" src="amor-vem-ca.mp3" loop></audio>
+
+<script>
+/* LOGIN */
+const senha="200925"
+const inputs=document.querySelectorAll('.digits input')
+
+inputs.forEach((i,idx)=>{
+  i.addEventListener('input',()=>{
+    if(i.value && idx<5) inputs[idx+1].focus()
+    check()
+  })
+})
+
+function check(){
+  let val=[...inputs].map(i=>i.value).join('')
+  if(val===senha){
+    openScreen('menu')
+    document.getElementById('music').play()
+  }
+}
+
+/* NAVEGAÇÃO */
+function openScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'))
+  document.getElementById(id).classList.add('active')
+}
+function back(){openScreen('menu')}
+
+/* MEMORIAS */
+let memIndex=0
+const memStack=document.querySelector('.memory-stack')
+function nextMemory(){
+  if(memIndex>=16) return
+  const img=document.createElement('img')
+  img.src=`mem${memIndex+1}.jpg`
+  memStack.appendChild(img)
+  memIndex++
+}
+
+/* CALENDARIO */
+const start=new Date("2025-09-20")
+setInterval(()=>{
+  const now=new Date()
+  let diff=now-start
+
+  let totalSeconds=Math.floor(diff/1000)
+  let seconds=totalSeconds%60
+  let totalMinutes=Math.floor(totalSeconds/60)
+  let minutes=totalMinutes%60
+  let totalHours=Math.floor(totalMinutes/60)
+  let hours=totalHours%24
+  let totalDays=Math.floor(totalHours/24)
+  let years=Math.floor(totalDays/365)
+  let months=Math.floor((totalDays%365)/30)
+  let days=(totalDays%365)%30
+
+  document.getElementById('time').innerHTML=
+    `${years} anos<br>${months} meses<br>${days} dias<br>${hours} horas<br>${minutes} minutos<br>${seconds} segundos`
+},1000)
+
+/* JOGO */
+const grid=document.querySelector('.grid')
+let imgs=[...Array(8).keys()].flatMap(i=>[`mem${i+1}.jpg`,`mem${i+1}.jpg`]).sort(()=>Math.random()-.5)
+let open=[],matched=0
+
+imgs.forEach(src=>{
+  const c=document.createElement('div')
+  c.className='card-game'
+  c.onclick=()=>{
+    if(open.length<2 && !c.innerHTML){
+      const im=document.createElement('img')
+      im.src=src
+      c.appendChild(im)
+      open.push({c,src})
+      if(open.length==2){
+        if(open[0].src===open[1].src){
+          matched++
+          open=[]
+          if(matched==8){
+            document.getElementById('win').innerHTML=
+              `<div class="victory">PARABÉNS, NEGASAFADA! 💙</div>`
+          }
+        }else{
+          setTimeout(()=>{
+            open.forEach(o=>o.c.innerHTML='')
+            open=[]
+          },700)
+        }
+      }
+    }
+  }
+  grid.appendChild(c)
+})
+</script>
+
+</body>
+</html>
